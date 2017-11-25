@@ -10,5 +10,20 @@ router.get('/about', function(req, res, next) {
   res.render('about', null);
 });
 
+router.post('/:action', function(req, res, next) {  //router.get('/:action', function(req, res, next) {
+    var action = req.params.action  //var action = req.query.action
+
+	if (action == 'contact') {
+        console.log(req.body)
+	}
+})
+
+// router.post('/:action', function(req, res, next){
+// 	var action = req.params.action
+
+// 	if (action == 'contact'){        //if (action == 'post'){
+// 		console.log(req.body)     //console.log(params.body)     
+// 	} 
+// })
 
 module.exports = router;
