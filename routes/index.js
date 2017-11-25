@@ -18,12 +18,12 @@ router.post('/:action', function(req, res, next) {  //router.get('/:action', fun
 	}
 })
 
-// router.post('/:action', function(req, res, next){
-// 	var action = req.params.action
+router.get('/project/:name', function(req, res, next) { //router.get(':/name', function(req, res, next) {
+	var name = req.params.name
 
-// 	if (action == 'contact'){        //if (action == 'post'){
-// 		console.log(req.body)     //console.log(params.body)     
-// 	} 
-// })
+	if (name == name) {
+		res.render(name, null)
+	}
+})
 
 module.exports = router;
