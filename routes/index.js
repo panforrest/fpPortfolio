@@ -15,6 +15,7 @@ router.post('/:action', function(req, res, next) {  //router.get('/:action', fun
 
 	if (action == 'contact') {
         console.log(req.body)
+        res.render('confirmation', null)
 	}
 })
 
