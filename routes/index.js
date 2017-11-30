@@ -10,12 +10,16 @@ router.get('/about', function(req, res, next) {
   res.render('about', null);
 });
 
+router.get('/confirmation', function(req, res, next){
+	res.render('confirmation', null)  //res.render('confirmation', 'null') //res.render('confirmation, null')
+})
+
 router.post('/:action', function(req, res, next) {  //router.get('/:action', function(req, res, next) {
     var action = req.params.action  //var action = req.query.action
 
 	if (action == 'contact') {
         console.log(req.body)
-        res.render('confirmation', null)
+        res.redirect('/confirmation')  //res.redirect('/confirmation', null)
 	}
 })
 
