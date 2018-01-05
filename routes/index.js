@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-var helper = require('sendgrid').mail;
-var from_email = new helper.Email('guoqianp@gmail.com');
-var to_email = new helper.Email('guoqianp@gmail.com');
-var subject = 'Hello World from the SendGrid Node.js Library!';
-var content = new helper.Content('text/plain', 'Hello, Email!');
-var mail = new helper.Mail(from_email, subject, to_email, content);
+// var helper = require('sendgrid').mail;
+// var from_email = new helper.Email('guoqianp@gmail.com');
+// var to_email = new helper.Email('guoqianp@gmail.com');
+// var subject = 'Hello World from the SendGrid Node.js Library!';
+// var content = new helper.Content('text/plain', 'Hello, Email!');
+// var mail = new helper.Mail(from_email, subject, to_email, content);
 
 
 /* GET home page. */
@@ -25,8 +25,17 @@ router.get('/confirmation', function(req, res, next){
 router.post('/:action', function(req, res, next) {  //router.get('/:action', function(req, res, next) {
     var action = req.params.action  //var action = req.query.action
 
+
+
 	if (action == 'contact') {
         console.log(req.body)
+		
+		var helper = require('sendgrid').mail;
+		var from_email = new helper.Email('guoqianp@gmail.com');
+		var to_email = new helper.Email('guoqianp@gmail.com');		
+		var subject = req.body.subject;
+		var content = new helper.Content('text/plain', req.body.message);
+		var mail = new helper.Mail(from_email, subject, to_email, content);
 
         //SEND EMAIL
 
@@ -51,19 +60,21 @@ router.post('/:action', function(req, res, next) {  //router.get('/:action', fun
 		  	return
 		  }
 
-		  res.json({
-		  	confirmation: 'success',
-		  	message: response.body
-		  })
+          res.redirect('/confirmation')  //NOT res.redirect('/confirmation', null)
+          
+		  // res.json({
+		  // 	confirmation: 'success',
+		  // 	message: response.body
+		  // })
 
-		  return
+		  // return
 
 		});
 
 
 
 
-        // res.redirect('/confirmation')  //res.redirect('/confirmation', null)
+        
 	}
 })
 
