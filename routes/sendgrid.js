@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var sendgrid = require('sendgrid')
+var sendgrid = require('sendgrid')// PROBABLY EVEN DON'T NEED TO HAVE THIS LINE
 var helper = require('sendgrid').mail;
 var from_email = new helper.Email('guoqianp@gmail.com');
 var to_email = new helper.Email('guoqianp@gmail.com');
