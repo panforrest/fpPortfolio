@@ -32,9 +32,10 @@ router.post('/:action', function(req, res, next) {  //router.get('/:action', fun
 		
 		var helper = require('sendgrid').mail;
 		var from_email = new helper.Email('guoqianp@gmail.com');
-		var to_email = new helper.Email('guoqianp@gmail.com');		
+		var to_email = new helper.Email('guoqianp@gmail.com');
+		var email = req.body.email;		
 		var subject = req.body.subject;
-		var content = new helper.Content('text/plain', req.body.message);
+		var content = new helper.Content('text/plain', req.body.message+' from '+email+' '+req.body.fullName+' '+req.body.phone);
 		var mail = new helper.Mail(from_email, subject, to_email, content);
 
         //SEND EMAIL
