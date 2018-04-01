@@ -25,10 +25,14 @@ router.get('/confirmation', function(req, res, next){
 router.post('/:action', function(req, res, next) {  //router.get('/:action', function(req, res, next) {
     var action = req.params.action  //var action = req.query.action
 
-
-
 	if (action == 'contact') {
         console.log(req.body)
+     //    var fullName = req.body.fullName
+
+     //    if (fullName.length == 0){
+	    // 	alert('Please fill in your NAME')
+	    // 	return
+	    // }
 		
 		var helper = require('sendgrid').mail;
 		var from_email = new helper.Email('guoqianp@gmail.com');
